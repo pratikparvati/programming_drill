@@ -205,6 +205,15 @@ void insertNodeAtPos(int data, int pos) {
         std::cout << "Invalid position: " << pos << '\n';
         return;
     }
+
+    if (pos == 0) {
+        q = new struct Node;
+        q->data = data;
+        q->next = first;
+        first = q;
+        return;
+    }
+
     for (int i = 0; i < pos - 1; i++) p = p->next;
     q = new struct Node;
     q->data = data;
@@ -355,6 +364,10 @@ int main() {
     Merge(third, second);
     std::cout << "Merge: ";
     display(second);
+
+    insertNodeAtPos(100, 0);
+    std::cout << "Insert Node at Pos 0: ";
+    display();
 
     freeNodes();
 }
